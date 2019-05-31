@@ -23,14 +23,14 @@
   "homepage": "https://github.com/dumindarw/graphql-apollo-example#readme",
   "dependencies": {
     "apollo-server": "^2.5.0",
+    "dotenv": "^8.0.0",
     "graphql": "^14.3.1",
     "mongodb": "^3.2.6"
   },
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.5",
-    "@babel/node": "^7.4.5",
-    "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "@babel/preset-env": "^7.4.5"
+    "babel-core": "^6.26.3",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0"
   }
 }

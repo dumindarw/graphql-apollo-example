@@ -1,20 +1,10 @@
 import {ApolloServer, gql} from 'apollo-server';
 
 import Connection from './connection'
+import UsersDAO from './dao/usersDAO'
 
-/*const users = [
-  {
-    title: 'Harry Potter and the Chamber of Secrets',
-    author: 'J.K. Rowling',
-  },
-  {
-    title: 'Jurassic Park',
-    author: 'Michael Crichton',
-  },
-];
-*/
-
-//let users = [];
+var connection = new Connection().getInstance();
+let users;
 
 const typeDefs = gql`
   # Comments in GraphQL are defined with the hash (#) symbol.
@@ -34,10 +24,8 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    users: (users) => {
-      console.log(users);
-      
-      users
+    users: async () =>  {
+      return await UsersDAO.getAllUsers();
     },
   },
 };
@@ -47,13 +35,8 @@ const server = new ApolloServer({ typeDefs, resolvers });
 server.listen().then( ({ url }) => {
   console.log(`🚀  Server ready at ${url}`);
 
-   Connection.connect().then(db=>{
-    db.collection('users').find({}).toArray((err, items)=> {
-      //console.log(items);
-      users = items;
-      
-    });
-    
+  connection.connect().then( async db => {
+    await UsersDAO.injectDB(db);     
   })
 
 });

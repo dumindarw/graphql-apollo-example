@@ -3,11 +3,9 @@ const dbName = 'calamataid_db';
 
 import {MongoClient} from "mongodb";
 
-//const db = {};
-
 class Connection {
 
-    connect = async () => {
+    async connect() {
         
         let client = MongoClient.connect(MONGO_URL,{ useNewUrlParser: true }).then( client =>{
             console.log("Connected successfully mongo server");
@@ -21,4 +19,18 @@ class Connection {
     }
 }
 
-export default new Connection();
+class SingletonConnection {
+
+    constructor() {
+        if (!SingletonConnection.instance) {
+            SingletonConnection.instance = new Connection();
+        }
+    }
+  
+    getInstance() {
+        return SingletonConnection.instance;
+    }
+  
+  }
+
+export default SingletonConnection;
