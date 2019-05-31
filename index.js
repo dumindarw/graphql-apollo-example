@@ -2,9 +2,7 @@ import {ApolloServer, gql} from 'apollo-server';
 
 import Connection from './connection'
 
-
-
-const books = [
+/*const users = [
   {
     title: 'Harry Potter and the Chamber of Secrets',
     author: 'J.K. Rowling',
@@ -14,29 +12,35 @@ const books = [
     author: 'Michael Crichton',
   },
 ];
+*/
+
+//let users = [];
 
 const typeDefs = gql`
   # Comments in GraphQL are defined with the hash (#) symbol.
 
   # This "Book" type can be used in other type declarations.
-  type Book {
-    title: String
-    author: String
+  type User {
+    username: String
+    nic: String
   }
 
   # The "Query" type is the root of all GraphQL queries.
   # (A "Mutation" type will be covered later on.)
   type Query {
-    books: [Book]
+    users: [User]
   }
 `;
 
 const resolvers = {
   Query: {
-    books: () => books,
+    users: (users) => {
+      console.log(users);
+      
+      users
+    },
   },
 };
-
 
 const server = new ApolloServer({ typeDefs, resolvers });
 
@@ -44,10 +48,12 @@ server.listen().then( ({ url }) => {
   console.log(`🚀  Server ready at ${url}`);
 
    Connection.connect().then(db=>{
-    db.collection('user').find({}, (err, r)=>{
-      console.log(r);
+    db.collection('users').find({}).toArray((err, items)=> {
+      //console.log(items);
+      users = items;
       
     });
+    
   })
 
 });
