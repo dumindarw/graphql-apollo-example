@@ -4,7 +4,8 @@
   "description": "GraphQL exaple with Apollo server",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node_modules/.bin/babel-node.cmd index.js"
   },
   "repository": {
     "type": "git",
@@ -22,12 +23,14 @@
   "homepage": "https://github.com/dumindarw/graphql-apollo-example#readme",
   "dependencies": {
     "apollo-server": "^2.5.0",
-    "graphql": "^14.3.1"
+    "graphql": "^14.3.1",
+    "mongodb": "^3.2.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
     "@babel/node": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/preset-env": "^7.4.5"
   }
 }

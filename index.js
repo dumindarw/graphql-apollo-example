@@ -1,5 +1,9 @@
 import {ApolloServer, gql} from 'apollo-server';
 
+import Connection from './connection'
+
+
+
 const books = [
   {
     title: 'Harry Potter and the Chamber of Secrets',
@@ -36,6 +40,14 @@ const resolvers = {
 
 const server = new ApolloServer({ typeDefs, resolvers });
 
-server.listen().then(({ url }) => {
+server.listen().then( ({ url }) => {
   console.log(`🚀  Server ready at ${url}`);
+
+   Connection.connect().then(db=>{
+    db.collection('user').find({}, (err, r)=>{
+      console.log(r);
+      
+    });
+  })
+
 });
