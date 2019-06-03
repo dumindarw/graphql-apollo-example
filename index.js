@@ -1,7 +1,7 @@
 import {ApolloServer, gql} from 'apollo-server';
 
 import Connection from './connection'
-import UsersDAO from './dao/usersDAO'
+import UsersDAO from './dao/users.dao'
 
 var connection = new Connection().getInstance();
 let users;

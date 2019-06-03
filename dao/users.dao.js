@@ -4,7 +4,7 @@ export default class UsersDAO {
 
     static async injectDB(db) {
      
-      try {
+    try {
         users = await db.collection("users");
       } catch (e) {
         console.error(`Unable to establish collection handles in userDAO: ${e}`)
