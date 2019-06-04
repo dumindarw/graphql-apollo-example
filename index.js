@@ -11,14 +11,15 @@ const typeDefs = gql`
 
   # This "Book" type can be used in other type declarations.
   type User {
-    username: String
-    nic: String
+    username: String!
+    nic: String!
   }
 
   # The "Query" type is the root of all GraphQL queries.
   # (A "Mutation" type will be covered later on.)
   type Query {
-    users: [User]
+    users: [User],
+    user(username: String!): User
   }
 `;
 
@@ -26,6 +27,11 @@ const resolvers = {
   Query: {
     users: async () =>  {
       return await UsersDAO.getAllUsers();
+    },
+    user: async (username)=>{
+      console.log(username);
+      
+      return await UsersDAO.getUserByUsername(username);
     },
   },
 };

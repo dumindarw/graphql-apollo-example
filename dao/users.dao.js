@@ -17,4 +17,10 @@ export default class UsersDAO {
         ).toArray();
     }
 
+    static async getUserByUsername(username){
+      console.log(username);
+      
+      return await users.findOne({'username': username});
+    }
+
 }
