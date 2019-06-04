@@ -1,0 +1,38 @@
+# Queries
+query a{
+  user(username: "dum2"){
+    nic
+    firstname
+    currentaddr {
+      district
+      
+    }
+    location{
+      coordinates
+    }
+  }
+}
+
+# Mutations
+mutation b{
+  adduser(user: {username:"dum5",firstname:"Duminda2",
+    lastname:"Wanninayake",password:"abc123",nic:"870750986V",
+  deviceid:"1234567", email:"deemind@gmail.com",tp:"0779906999",
+  location:{type:"Point", coordinates: [7.88,81.44]},
+  currentaddr:{district:"Jaffna",dsdivision:"Periamia"},verified:false,blackListed:false}){
+    insertedId
+  }
+}
+
+mutation c{
+  updateuser(username: "dum2",firstname:"Ishika", lastname: "Harshani"){
+    firstname
+  }
+}
+
+
+mutation d{
+  deleteuser(username: "dum7"){
+    username
+  }
+}
