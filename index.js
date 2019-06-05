@@ -66,8 +66,6 @@ const typeDefs = gql`
     insertedId: ID!
   }
 
-
- 
   # User related queries
   type Query {
     users: [User],
@@ -77,12 +75,13 @@ const typeDefs = gql`
   # Adding Users/Updating and deleting
 
   type Mutation {
-    adduser(user: UserInput!): Response!,
+    adduser(username: String!, firstname:String!, lastname: String!,
+      password: String!, nic: String!, deviceid: String!,
+      email: String!, tp: String!, location: LocationInput!,
+      currentaddr: AddressInput!, verified: Boolean!, blackListed: Boolean!): Response!,
     updateuser(username: String!, firstname: String!, lastname: String!): User,
     deleteuser(username: String!): User
   }
-
-
 
 `;
 

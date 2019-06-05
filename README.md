@@ -1,5 +1,12 @@
-# Queries
+#User related Queries
+
 query a{
+  users{
+    username
+  }
+}
+
+query b{
   user(username: "dum2"){
     nic
     firstname
@@ -13,25 +20,25 @@ query a{
   }
 }
 
-# Mutations
-mutation b{
-  adduser(user: {username:"dum5",firstname:"Duminda2",
+#User related Mutations
+mutation c{
+  adduser(username:"dum5",firstname:"Duminda2",
     lastname:"Wanninayake",password:"abc123",nic:"870750986V",
   deviceid:"1234567", email:"deemind@gmail.com",tp:"0779906999",
   location:{type:"Point", coordinates: [7.88,81.44]},
-  currentaddr:{district:"Jaffna",dsdivision:"Periamia"},verified:false,blackListed:false}){
+  currentaddr:{district:"Jaffna",dsdivision:"Periamia"},verified:false,blackListed:false){
     insertedId
   }
 }
 
-mutation c{
-  updateuser(username: "dum2",firstname:"Ishika", lastname: "Harshani"){
+mutation d{
+  updateuser(username: "dum5",firstname:"Ishika", lastname: "Harshani"){
     firstname
   }
 }
 
 
-mutation d{
+mutation e{
   deleteuser(username: "dum7"){
     username
   }
