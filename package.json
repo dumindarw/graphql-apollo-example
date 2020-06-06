@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/dumindarw/graphql-apollo-example#readme",
   "dependencies": {
-    "apollo-server": "^2.5.0",
+    "apollo-server": "^2.14.2",
     "dotenv": "^8.0.0",
     "graphql": "^14.3.1",
     "keycloak-admin": "^1.12.0",
